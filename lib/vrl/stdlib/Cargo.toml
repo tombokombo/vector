@@ -112,6 +112,7 @@ default = [
     "parse_url",
     "push",
     "redact",
+    "remove_datadog_tags",
     "replace",
     "round",
     "sha1",
@@ -212,6 +213,7 @@ parse_tokens = ["shared/tokenize"]
 parse_url = ["url"]
 push = []
 redact = []
+remove_datadog_tags = []
 replace = []
 round = []
 sha1 = ["sha-1", "hex"]
