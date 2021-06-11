@@ -303,8 +303,9 @@ impl Sink<Event> for KafkaSink {
         self.seq_head += 1;
 
         let producer = Arc::clone(&self.producer);
+        let kf = self.key_field.as_ref().unwrap_or(&String::new()).clone();
         self.delivery_fut.push(Box::pin(async move {
-            let mut record = if key.len() == 0 {
+            let mut record = if kf.eq("none") {
                 FutureRecord::to(&topic).payload(&body[..])
             } else {
                 FutureRecord::to(&topic).key(&key).payload(&body[..])
